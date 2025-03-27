@@ -8,20 +8,20 @@ export default class Model{
   }
 
   static table() {
-    throw new Error('You must define a table name for your model.');
+    throw new Error("Table name is not defined. Ensure your model includes a static table() method that returns the table name.");
   }
 
   // ========================================================================
   // ========================================================================
 
-  static findBy(conditions, extra={}) {
+  static findBy(conditions, opts={}) {
 
     return this.buildRecord((baseRecord) => {
       baseRecord.setConditions(conditions);
-      if(extra.returnsCollection){
+      if(opts.returnsCollection){
         baseRecord.returnsCollection = true;
       }
-      if(extra.getOne !== false){
+      if(opts.getOne !== false){
         baseRecord.setLimit(1);
       }
     });
@@ -142,7 +142,6 @@ export default class Model{
       // options.relations = this.relations;
       this.relations();
     }
-
     
     const baseRecord = new BaseRecord(options);
     
