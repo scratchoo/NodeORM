@@ -1,0 +1,6 @@
+the index.js file is what used to call either the migration generator which is in migrationGenerator.js or model generator which is in modelGenerator.js
+--------------------------------------------------------------------------------------------
+
+node ./src/orm/generate model article table:articles title:string content:string user:references
+node ./src/orm/generate model article title:string content:string user:references (without table:articles)
+node ./src/orm/generate migration addIndexToPosts title
